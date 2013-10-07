@@ -1,0 +1,6 @@
+C:\Users\russosv\Documents\Visual Studio 2010\Projects\MSAccessHookTests\MSAccessHookTests\bin\Debug\MSAccessHookTests.exe
+C:\Users\russosv\Documents\Visual Studio 2010\Projects\MSAccessHookTests\MSAccessHookTests\bin\Debug\MSAccessHookTests.pdb
+C:\Users\russosv\Documents\Visual Studio 2010\Projects\MSAccessHookTests\MSAccessHookTests\bin\Debug\EasyHook.dll
+C:\Users\russosv\Documents\Visual Studio 2010\Projects\MSAccessHookTests\MSAccessHookTests\obj\x86\Debug\MSAccessHookTests.exe
+C:\Users\russosv\Documents\Visual Studio 2010\Projects\MSAccessHookTests\MSAccessHookTests\obj\x86\Debug\MSAccessHookTests.pdb
+C:\Users\russosv\Documents\Visual Studio 2010\Projects\MSAccessHookTests\MSAccessHookTests\bin\Debug\MSAccessHookTests.exe.config
