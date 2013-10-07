@@ -12,7 +12,7 @@ namespace FileMon
     {
         public void IsInstalled(Int32 InClientPID)
         {
-            Console.WriteLine("FileMon has been installed in target {0}.\r\n", InClientPID);
+            Console.WriteLine("MSAccessHookTests has been installed in target {0}.\r\n", InClientPID);
         }
 
         public void OnCreateFile(Int32 InClientPID, String[] InFileNames)
@@ -56,7 +56,7 @@ namespace FileMon
             if ((args.Length != 1) || !Int32.TryParse(args[0], out TargetPID))
             {
                 Console.WriteLine();
-                Console.WriteLine("Usage: FileMon %PID%");
+                Console.WriteLine("Usage: MSAccessHookTests %PID%");
                 Console.WriteLine();
 
                 return;

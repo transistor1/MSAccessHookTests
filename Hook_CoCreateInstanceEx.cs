@@ -85,6 +85,8 @@ namespace FileMonInject
 
             if (dwCount > 0)
             {
+                //To access the MULTI_QI array from inside the EasyHook delegate,
+                //we have to manually marshal it manually because it was causing crashes.
                 MULTI_QI[] pResultsObj = new MULTI_QI[dwCount];
 
                 for (int i = 0; i < dwCount; i++)
@@ -94,7 +96,6 @@ namespace FileMonInject
                     qi.IID = (Guid)Marshal.PtrToStructure(ptrToIID, typeof(Guid));
                     pResults = IntPtr.Add(pResults, IntPtr.Size);
                     qi.pItf = Marshal.ReadIntPtr(pResults); //A pointer to the interface requested in pIID. This member must be NULL on input.
-                    //object iface = Marshal.PtrToStructure(qi.pItf, typeof(object));
                     
                     pResults = IntPtr.Add(pResults, IntPtr.Size);
 
@@ -106,12 +107,14 @@ namespace FileMonInject
                             break;
                         case 4: //32-bit:
                              qi.hr = (uint)Marshal.ReadInt32(pResults);
-                            pResults = IntPtr.Add(pResults, sizeof(UInt32)); //a UINT is 4 bytes
+                            pResults = IntPtr.Add(pResults, sizeof(UInt32));
                             break;
                         default:
                             break; //unknown platform
                     }
 
+
+                    //68cce6c0... is Access._Application interface
                     if (qi.hr == S_OK && qi.IID == Guid.Parse("68cce6c0-6129-101b-af4e-00aa003f0f07"))
                     {
                         Microsoft.Office.Interop.Access.Application app;
@@ -127,11 +130,11 @@ namespace FileMonInject
                             {
                                 //Main This = (Main)HookRuntimeInfo.Callback;
 
-                                lock (AccessInstances)
+                                lock (This.AccessInstances)
                                 {
                                     if (ProcID != 0)
                                     {
-                                        AccessInstances.Enqueue(ProcID);
+                                        This.AccessInstances.Enqueue(ProcID);
                                     }
                                 }
                             }

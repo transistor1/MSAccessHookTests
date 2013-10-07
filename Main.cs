@@ -14,7 +14,8 @@ namespace FileMonInject
         LocalHook CreateFileHook;
         LocalHook TestHook;
         ConcurrentQueue<String> FileQueue = new ConcurrentQueue<String>();
-        static ConcurrentQueue<uint> AccessInstances = new ConcurrentQueue<uint>();
+        ConcurrentQueue<uint> AccessInstances = new ConcurrentQueue<uint>();
+        static Main This;
 
         public Main(
             RemoteHooking.IContext InContext,
@@ -47,6 +48,8 @@ namespace FileMonInject
                     this);
 
                 TestHook.ThreadACL.SetExclusiveACL(new Int32[] { 0 });
+
+                This = this;//(Main)HookRuntimeInfo.Callback;
             }
             catch (Exception ExtInfo)
             {
@@ -150,7 +153,7 @@ namespace FileMonInject
             
             try
             {
-                Main This = (Main)HookRuntimeInfo.Callback;
+                //Main This = (Main)HookRuntimeInfo.Callback;
 
                 lock (This.FileQueue)
                 {
