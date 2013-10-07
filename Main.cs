@@ -76,12 +76,9 @@ namespace FileMonInject
                         {
                             Instances = AccessInstances.ToArray();
 
-                            //FileQueue.Clear();
                             uint tmp;
                             while (AccessInstances.Count > 0)
                                 AccessInstances.TryDequeue(out tmp);
-
-                           
                         }
 
                         Interface.OnSpawnAccess(RemoteHooking.GetCurrentProcessId(), Instances);            
@@ -96,7 +93,6 @@ namespace FileMonInject
                         {
                             Package = FileQueue.ToArray();
 
-                            //FileQueue.Clear();
                             string tmp;
                             while (FileQueue.Count > 0)
                                 FileQueue.TryDequeue(out tmp);

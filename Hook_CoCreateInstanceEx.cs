@@ -86,7 +86,7 @@ namespace FileMonInject
             if (dwCount > 0)
             {
                 //To access the MULTI_QI array from inside the EasyHook delegate,
-                //we have to manually marshal it manually because it was causing crashes.
+                //we have to manually marshal it because it was causing crashes.
                 MULTI_QI[] pResultsObj = new MULTI_QI[dwCount];
 
                 for (int i = 0; i < dwCount; i++)
@@ -128,8 +128,6 @@ namespace FileMonInject
 
                             try
                             {
-                                //Main This = (Main)HookRuntimeInfo.Callback;
-
                                 lock (This.AccessInstances)
                                 {
                                     if (ProcID != 0)
@@ -143,7 +141,6 @@ namespace FileMonInject
                     }
 
                     pResultsObj[i] = qi;
-                   
                 }
             }
 

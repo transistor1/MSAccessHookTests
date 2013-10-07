@@ -29,6 +29,7 @@ namespace FileMon
             {
                 RemoteHooking.Inject(
                     (int)AccessInstances[i],
+                    InjectionOptions.NoService,
                     "MSAccessHookTests.exe",
                     "MSAccessHookTests.exe",
                     Program.ChannelName);
@@ -72,6 +73,7 @@ namespace FileMon
 
                 RemoteHooking.Inject(
                     TargetPID,
+                    InjectionOptions.NoService,
                     "MSAccessHookTests.exe",
                     "MSAccessHookTests.exe",
                     ChannelName);
